@@ -175,32 +175,31 @@ export default {
      * in which the user will be redirected to.
      */
     setAuthUrl() {
-      searchParams.toString()
-      searchParams.append('client_id', this.auth.clientId)
-      searchParams.append('response_type', 'code')
-      searchParams.append('redirect_uri', window.location.origin)
-      searchParams.append(
-        'state',
-        [
-          Math.random()
-            .toString(33)
-            .substring(2),
-          Math.random()
-            .toString(34)
-            .substring(3),
-          Math.random()
-            .toString(35)
-            .substring(4),
-          Math.random()
-            .toString(36)
-            .substring(5)
-        ].join('-')
-      )
-      searchParams.append('scope', 'user-read-currently-playing')
+  searchParams.toString()
+  searchParams.append('client_id', this.auth.clientId)
+  searchParams.append('response_type', 'code')
+  searchParams.append('redirect_uri', window.location.origin)
+  searchParams.append(
+    'state',
+    [
+      Math.random()
+        .toString(33)
+        .substring(2),
+      Math.random()
+        .toString(34)
+        .substring(3),
+      Math.random()
+        .toString(35)
+        .substring(4),
+      Math.random()
+        .toString(36)
+        .substring(5)
+    ].join('-')
+  )
+  searchParams.append('scope', 'user-read-currently-playing user-read-playback-state user-modify-playback-state')
 
-      return `${this.endpoints.auth}?${searchParams.toString()}`
-    }
-  },
+  return `${this.endpoints.auth}?${searchParams.toString()}`
+},
 
   watch: {
     /**
